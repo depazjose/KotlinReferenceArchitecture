@@ -30,10 +30,10 @@ interface BookResponse {
       fun isbn(isbn: Long) = apply { this.isbn = isbn }
       fun name(name: String) = apply { this.name = name }
       fun quantity(quantity: Int) = apply { this.quantity = quantity }
-      fun available(available: Boolean) = apply { this.available = available }
+      fun available(available: Boolean?) = apply { this.available = available }
       fun author(author: String) = apply { this.author = author }
-      fun properties(properties: Map<String, Any>) = apply { this.properties = properties }
-      fun startSaleDate(startSaleDate: Long) = apply { this.startSaleDate = startSaleDate }
+      fun properties(properties: Map<String, Any>?) = apply { this.properties = properties }
+      fun startSaleDate(startSaleDate: Long?) = apply { this.startSaleDate = startSaleDate }
       fun status(status: String) = apply { this.status = status}
       fun build() = BookDetailResponse(id, isbn, name, quantity, available, author, properties, startSaleDate, status)
     }

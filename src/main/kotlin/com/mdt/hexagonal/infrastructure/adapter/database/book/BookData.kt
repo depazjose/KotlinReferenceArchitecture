@@ -21,8 +21,8 @@ data class BookData (
 
   @NotBlank(message = "Name is mandatory")
   val name: String,
-  val quantity: Int? = null,
-  val available: Boolean? = null,
+  val quantity: Int,
+  val available: Boolean?,
 
   @NotBlank(message = "Author is mandatory")
   val author: String,
