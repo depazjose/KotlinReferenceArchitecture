@@ -1,25 +1,53 @@
+---
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+  output:
+    ansi:
+      enabled: ALWAYS
+server:
+  port: 9100
+inventory:
+  active-items:
+    enabled: true
+    cron-period: 0 * * * * *
+---
+spring.profiles: mysql
 
 spring:
   datasource:
-    #url: jdbc:h2:file:~/data/demoRefKt;TRACE_LEVEL_FILE=4
-    #driverClassName: org.h2.Driver
-    #username: sa
-    #password: password
     url: jdbc:mysql://localhost:3306/hexa?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: root
     initialization-mode: never
   jpa:
-    #database-platform: org.hibernate.dialect.H2Dialect
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: update
     properties:
       hibernate.hbm2ddl.import_files: schema.sql
-  output:
-    ansi:
-      enabled: ALWAYS
+---
+spring.profiles: h2
+
+spring:
+  datasource:
+    url: jdbc:h2:file:~/data/demoRefKt;TRACE_LEVEL_FILE=4
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    initialization-mode: never
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.hbm2ddl.import_files: schema.sql
   h2:
     console:
       enabled: false
@@ -27,19 +55,4 @@ spring:
       settings:
         trace: false
         web-allow-others: true
-  redis:
-    host: localhost
-    port: 6379
-
-  cache:
-    type: redis
-    redis:
-      time-to-live: 60000
-
-inventory:
-  active-items:
-    enabled: true
-    cron-period: 0 * * * * *
-
-server:
-  port: 9100
+---
