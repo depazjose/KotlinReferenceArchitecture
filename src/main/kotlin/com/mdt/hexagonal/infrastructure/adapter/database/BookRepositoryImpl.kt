@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class BookRepositoryImpl(private val bookRepositoryAdapter: BookRepositoryAdapter) : BookRepository {
 
   override fun saveBook(book: BookDto): BookDto {
-    TODO("Not yet implemented")
+    return bookRepositoryAdapter.saveBook(book)
   }
 
   override fun findByIsbn(isbn: Long): BookDto? {

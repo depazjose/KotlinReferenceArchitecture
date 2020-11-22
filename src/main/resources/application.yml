@@ -12,10 +12,12 @@ spring:
       enabled: ALWAYS
 server:
   port: 9100
+  error:
+    include-message: always
 inventory:
   active-items:
     enabled: true
-    cron-period: 0 * * * * *
+
 ---
 spring.profiles: mysql
 
